@@ -1,17 +1,17 @@
 /**
  * @author:      Alec Ellebracht
  * @date:        May 31, 2018
- * @description: Serive to copy fields with identical api names from one object to another
+ * @description: Service to copy fields with identical api names from one object to another
 **/
 
 public class FieldTwinningService {
 
-	/*
-	 * @description : Twins fields with the same api name from one object to the other
+    /*
+     * @description : Twins fields with the same api name from one object to the other
      *
      * @param : SObject fromObj - object to copy values from
      * @param : SObject toObj - object to copy values to
-	 */ 
+     */ 
     public static void twin( SObject fromObj, SObject toObj ) {
 
         if( fromObj == null || toObj == null ) return;
