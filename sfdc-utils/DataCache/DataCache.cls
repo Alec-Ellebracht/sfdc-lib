@@ -101,4 +101,28 @@ public abstract class DataCache {
         }
         return instance.cachedMap;
     }
+
+    /**
+     * @description : This will clear out the data stored in the cache
+     *
+     * @return: None
+     */
+    protected virtual void purge () {
+
+        DataCache instance = this.getInstance();
+        instance.cachedMap = null;
+    }
+
+    /**
+     * @description : This will re-query all the records in the current cache
+     *
+     * @return: None
+     */
+    protected virtual void refresh () {
+
+        DataCache instance = this.getInstance();
+        Set<Id> loadedIds = instance.cachedMap.keySet().clone();
+        instance.purge();
+        instance.loadMap(loadedIds);
+    }
 }
