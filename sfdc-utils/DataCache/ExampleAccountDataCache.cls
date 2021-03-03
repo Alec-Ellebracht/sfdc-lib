@@ -27,6 +27,16 @@ public without sharing class ExampleAccountDataCache extends DataCache {
         return new Map<Id,Account>((List<Account>)instance.buildMap(setIds).values());
     }
 
+    // a static method to purge this cache
+    public static void purge () {
+        instance.purge();
+    }
+
+    // a static method to refresh this cache
+    public static void refresh () {
+        instance.refresh();
+    }
+    
     /***********************************************************************************************
     *
     * Implemented Abstract Methods
