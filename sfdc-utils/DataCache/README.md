@@ -1,5 +1,6 @@
-```
-// Example using the data cache for accounts
+# Example using the data cache for accounts
+
+```java
 
 Set<Id> acctIds = new Set<Id>{
     '0015400000a1U5O'
