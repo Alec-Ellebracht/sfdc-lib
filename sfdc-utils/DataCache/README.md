@@ -1,3 +1,4 @@
+```
 // Example using the data cache for accounts
 
 Set<Id> acctIds = new Set<Id>{
@@ -18,3 +19,4 @@ AccountDataCache.purge();
 
 // call refresh to requery all the data in the cache
 AccountDataCache.refresh();
+```
