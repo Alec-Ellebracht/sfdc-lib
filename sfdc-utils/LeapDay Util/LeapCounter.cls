@@ -20,6 +20,25 @@ public with sharing class LeapCounter {
     ***********************************************************************************************/
 
     /*
+     * @description : Provides the number of days between two dates excluding leap days
+     *
+     * @param : { Date } startDate - the start date for the range
+     * @param : { Date } endDate - the end date for the range
+     * @return : Integer - the number of days between two dates excluding leap days
+     */
+    public static Decimal daysBetweenWithoutLeapDays (Date startDate, Date endDate) {
+
+        if (endDate < startDate) {
+            throw new LeapCounterException(INVALID_DATES_ERR);
+        }
+
+        Decimal totalDays = (Decimal)startDate.daysBetween(endDate);
+        Decimal leapDays = leapDaysBetween(startDate, endDate);
+
+        return (totalDays - leapDays);
+    }
+
+    /*
      * @description : Provides the number of leap days between 2 dates
      *
      * @param : { Date } startDate - the start date for the range
@@ -30,6 +49,10 @@ public with sharing class LeapCounter {
 
         if (endDate < startDate) {
             throw new LeapCounterException(INVALID_DATES_ERR);
+        }
+
+        if (startDate == endDate) {
+            return 0;
         }
 
         Integer leapDays = leapYearsBetween(startDate.year(), endDate.year());
