@@ -13,13 +13,30 @@ public without sharing class LeapCounter_Test {
     *
     ***********************************************************************************************/
 
+    // tests the correct number of days are counted between two dates
+    @IsTest
+    public static void testDaysBetween () {
+
+        Date startDate = Date.newInstance(2020, 2, 28);
+        Date endDate = Date.newInstance(2020, 3, 28);
+
+        Test.startTest();
+
+            Decimal numDays = LeapCounter.daysBetweenWithoutLeapDays(startDate, endDate);
+
+        Test.stopTest();
+
+        System.assertEquals( 28, numDays,
+            'Uh oh, it looks like the count of days is incorrect.');
+    }
+
     // tests the correct number of leap days are counted when range is less than a year
     // in a leap year when the leap day is between the two dates
     @IsTest
     public static void testLeapDaysSameYearWithLeapDay () {
 
-        Date startDate = Date.parse('01/01/2020');
-        Date endDate = Date.parse('03/01/2020');
+        Date startDate = Date.newInstance(2020, 1, 1);
+        Date endDate = Date.newInstance(2020, 3, 1);
 
         Test.startTest();
 
@@ -36,8 +53,8 @@ public without sharing class LeapCounter_Test {
     @IsTest
     public static void testLeapDaysSameYearWithoutLeapDay () {
 
-        Date startDate = Date.parse('03/01/2020');
-        Date endDate = Date.parse('05/01/2020');
+        Date startDate = Date.newInstance(2020, 3, 1);
+        Date endDate = Date.newInstance(2020, 5, 1);
 
         Test.startTest();
 
@@ -53,8 +70,8 @@ public without sharing class LeapCounter_Test {
     @IsTest
     public static void testLeapDaysWithCenturyDates () {
 
-        Date startDate = Date.parse('01/01/1900');
-        Date endDate = Date.parse('04/01/2000');
+        Date startDate = Date.newInstance(1900, 1, 1);
+        Date endDate = Date.newInstance(2000, 4, 1);
 
         Test.startTest();
 
@@ -70,8 +87,8 @@ public without sharing class LeapCounter_Test {
     @IsTest
     public static void testLeapDaysForSameDate () {
 
-        Date startDate = Date.parse('01/01/2020');
-        Date endDate = Date.parse('01/01/2020');
+        Date startDate = Date.newInstance(2020, 1, 1);
+        Date endDate = Date.newInstance(2020, 1, 1);
 
         Test.startTest();
 
@@ -87,8 +104,8 @@ public without sharing class LeapCounter_Test {
     @IsTest
     public static void testLeapDaysWithBadDates () {
 
-        Date startDate = Date.parse('01/01/2021');
-        Date endDate = Date.parse('01/01/2020');
+        Date startDate = Date.newInstance(2021, 1, 1);
+        Date endDate = Date.newInstance(2020, 1, 1);
 
         Test.startTest();
 
