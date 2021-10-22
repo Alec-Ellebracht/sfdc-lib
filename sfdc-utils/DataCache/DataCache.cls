@@ -121,7 +121,7 @@ public abstract class DataCache {
     protected virtual void refresh () {
 
         DataCache instance = this.getInstance();
-        Set<Id> loadedIds = instance.cachedMap.keySet().clone();
+        Set<Id> loadedIds = instance.cachedMap?.keySet().clone();
         instance.purge();
         instance.loadMap(loadedIds);
     }
